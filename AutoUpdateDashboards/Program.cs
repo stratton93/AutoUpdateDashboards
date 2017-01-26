@@ -13,9 +13,22 @@ namespace AutoUpdateDashboards
         {
             //The source stays the same no matter what. Unless dir is changed this needs to change.
             const string source = @"C:\Users\Stratton\Downloads\";
+            string date = DateTime.Today.ToString();
             //The dest var won't be constant because this needs to happen everday.
-            string dest = @"C:\Users\Stratton\Desktop\Dashboards\" + DateTime.Today.ToString();
+            string dest = Path.Combine(@"C:\Users\Stratton\Desktop\Dashboards\", date);
+            removeInvalidChars(dest);
             moveFiles(addListValues(getFilesFromDownloads(source)), dest);
+        }
+
+        //Needed to scrub out unwanted input. Credit of stackoverflow user Tim Schmelter.
+        static string removeInvalidChars(string d)
+        {
+            string invalidChars = new string(Path.GetInvalidFileNameChars()) + new string(Path.GetInvalidPathChars());
+            foreach (char c in invalidChars)
+            {
+                d = d.Replace(c.ToString(), ""); // or with "."
+            }
+            return d;
         }
 
         static FileInfo[] getFilesFromDownloads(string source)
@@ -31,22 +44,25 @@ namespace AutoUpdateDashboards
             //Exampple: 01-25-2017 -> This will hold all the jpgs.
             try
             {
-                //If the Directory already exists, then delete it.
-                if(Directory.Exists(dirName))
+                //Create or re-create the new dir.
+                if (!Directory.Exists(dirName))
                 {
+                    Directory.CreateDirectory(dirName);
+                }
+                else
+                {
+                    //If the Directory already exists, then delete it.
                     Directory.Delete(dirName);
                 }
-                //Create or re-create the new dir.
-                Directory.CreateDirectory(dirName);
             }
             catch(Exception e)
             {
-                Console.WriteLine("Whoops:" + e.StackTrace);
+                String s = new string(Path.GetInvalidFileNameChars()) + new string(Path.GetInvalidPathChars());
             }
             finally
             {
                 //Going to rename the files before moving them.
-                renameFiles(x) //this is going to be doing some wizarding shit right here.
+                renameFiles(x); //this is going to be doing some wizarding shit right here.
 
             }
         }
