@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 using System.Collections.Generic;
 namespace AutoUpdateDashboards
 {
@@ -10,22 +11,29 @@ namespace AutoUpdateDashboards
     {
         static void Main(string[] args)
         {
-            string[] dashboardNames = { "Bedford", "Blacksburg", "Botetourt", "Cave Spring", "Christiansburg", "Fairlawn", "Galax"};
-            addListValues(dashboardNames);
+            const string source = @"C:\Users\Stratton\Downloads\";
+            printListValues(addListValues(getFilesFromDownloads(source)));
         }
 
-        static List<string> addListValues(string[] x)
+        static FileInfo[] getFilesFromDownloads(string source)
         {
-            List<string> t = new List<string>();
-            foreach (string v in x)
+            DirectoryInfo di = new DirectoryInfo(source);
+            FileInfo[] fi = di.GetFiles();
+            return fi;
+        }
+
+        static List<FileInfo> addListValues(FileInfo[] x)
+        {
+            List<FileInfo> t = new List<FileInfo>();
+            foreach (FileInfo v in x)
             {
                 t.Add(v);
             }
             return t;
         }
-        static void printListValues(List<string> w)
+        static void printListValues(List<FileInfo> w)
         {
-            foreach (string s in w)
+            foreach (FileInfo s in w)
             {
                 Console.WriteLine(s);
             }
