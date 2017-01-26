@@ -62,16 +62,26 @@ namespace AutoUpdateDashboards
             finally
             {
                 //Going to rename the files before moving them.
-                renameFiles(x); //this is going to be doing some wizarding shit right here.
+                //renameFiles(x); //this is going to be doing some wizarding shit right here.
 
             }
         }
 
         static void renameFiles(List<FileInfo> x)
         {
-            printListValues(x);
+            string s;
+            int count = 1;
+            foreach(FileInfo fi in x)
+            {
+                s = fi.ToString();
+                if(s.Contains("100 (" + count.ToString() + ")" ))
+                {
+
+                }
+            }
         }
 
+        //Need to remove this.
         static List<FileInfo> addListValues(FileInfo[] x)
         {
             List<FileInfo> t = new List<FileInfo>();
