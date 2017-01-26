@@ -10,6 +10,7 @@ namespace AutoUpdateDashboards
     {
         static void Main(string[] args)
         {
+            Console.Write("Hello");
         }
     }
 }
