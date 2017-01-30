@@ -36,45 +36,113 @@ namespace AutoUpdateDashboards
                 Console.WriteLine(e.Message);
             }
             finally
-            {
-                foreach(FileInfo f in fi)
-                {
-                    //File.Move(f.FullName, dest + newFileNames());
-                    if (f.Name.Equals("MTD Report-100.jpg"))
-                    {
-                        File.Move(f.FullName, dest + "MTD Report-Bedford " + DateTime.Today.ToString("MM-dd-yyy") + ".jpg");
-                    }
-                }
-            }   
-            newFileNames(dest);
-            Console.Read();
+            { FileRenaming(fi, dest); }  
+           
         }
 
-        static void newFileNames(string dest)
-        { 
-            string z = "";
-            const string prefix = "MTD Report-";
-            const string suffix = ".jpg";
-            string[] clinicNames = { "Bedford", "Blacksburg", "Botetourt", "Cave Spring", "Christiansburg", "Fairlawn",
-                "Galax", "Goldsboro", "Hillsville", "Peters Creek", "Rocky Mount", "All Company"};
-            string date = DateTime.Today.ToString("MM-dd-yyy");
-            foreach(string s in clinicNames)
-            {
-                z = (prefix + s +" "+ date + suffix);
-                Console.WriteLine(z);
-            }
-            ;
-        }
-
-        static void printListValues(FileInfo[] w)
+        static void FileRenaming (FileInfo[] x, string dest)
         {
-            foreach (FileInfo s in w)
+            string date = DateTime.Today.ToString("MM-dd-yyyy") + ".jpg";
+            foreach(FileInfo f in x)
             {
-                Console.WriteLine(s);
+                if (f.Name.Equals("MTD Report-100.jpg"))
+                {
+                    File.Move(f.FullName, dest + "MTD Report-Bedford " + date);
+                }
+                else if (f.Name.Equals("MTD Report-100 (1).jpg"))
+                {
+                    File.Move(f.FullName, (dest + "MTD Report-Blacksburg ") + date);
+                }
+                else if (f.Name.Equals("MTD Report-100 (2).jpg"))
+                {
+                    File.Move(f.FullName, (dest + "MTD Report-Botetourt ") + date);
+                }
+                else if (f.Name.Equals("MTD Report-100 (3).jpg"))
+                {
+                    File.Move(f.FullName, (dest + "MTD Report-Cave Spring ") + date);
+                }
+                else if (f.Name.Equals("MTD Report-100 (4).jpg"))
+                {
+                    File.Move(f.FullName, (dest + "MTD Report-Christiansburg ") + date);
+                }
+                else if (f.Name.Equals("MTD Report-100 (5).jpg"))
+                {
+                    File.Move(f.FullName, (dest + "MTD Report-Fairlawn ") + date);
+                }
+                else if (f.Name.Equals("MTD Report-100 (6).jpg"))
+                {
+                    File.Move(f.FullName, (dest + "MTD Report-Galax ") + date);
+                }
+                else if (f.Name.Equals("MTD Report-100 (7).jpg"))
+                {
+                    File.Move(f.FullName, (dest + "MTD Report-Goldsboro ") + date);
+                }
+                else if (f.Name.Equals("MTD Report-100 (8).jpg"))
+                {
+                    File.Move(f.FullName, (dest + "MTD Report-Hillsville ") + date);
+                }
+                else if (f.Name.Equals("MTD Report-100 (9).jpg"))
+                {
+                    File.Move(f.FullName, (dest + "MTD Report-Peters Creek ") + date);
+                }
+                else if (f.Name.Equals("MTD Report-100 (10).jpg"))
+                {
+                    File.Move(f.FullName, (dest + "MTD Report-Rocky Mount ") + date);
+                }
+                else if (f.Name.Equals("QTD Report-100.jpg"))
+                {
+                    File.Move(f.FullName, (dest + "QTD Report-Bedford ") + date);
+                }
+                else if (f.Name.Equals("QTD Report-100 (1).jpg"))
+                {
+                    File.Move(f.FullName, (dest + "QTD Report-Blacksburg ") + date);
+                }
+                else if (f.Name.Equals("QTD Report-100 (2).jpg"))
+                {
+                    File.Move(f.FullName, (dest + "QTD Report-Botetourt ") + date);
+                }
+                else if (f.Name.Equals("QTD Report-100 (3).jpg"))
+                {
+                    File.Move(f.FullName, (dest + "QTD Report-Cave Spring ") + date);
+                }
+                else if (f.Name.Equals("QTD Report-100 (4).jpg"))
+                {
+                    File.Move(f.FullName, (dest + "QTD Report-Christiansburg ") + date);
+                }
+                else if (f.Name.Equals("QTD Report-100 (5).jpg"))
+                {
+                    File.Move(f.FullName, (dest + "QTD Report-Fairlawn ") + date);
+                }
+                else if (f.Name.Equals("QTD Report-100 (6).jpg"))
+                {
+                    File.Move(f.FullName, (dest + "QTD Report-Galax ") + date);
+                }
+                else if (f.Name.Equals("QTD Report-100 (7).jpg"))
+                {
+                    File.Move(f.FullName, (dest + "QTD Report-Goldsboro ") + date);
+                }
+                else if (f.Name.Equals("QTD Report-100 (8).jpg"))
+                {
+                    File.Move(f.FullName, (dest + "QTD Report-Hillsville ") + date);
+                }
+                else if (f.Name.Equals("QTD Report-100 (9).jpg"))
+                {
+                    File.Move(f.FullName, (dest + "QTD Report-Peters Creek ") + date);
+                }
+                else if (f.Name.Equals("QTD Report-100 (10).jpg"))
+                {
+                    File.Move(f.FullName, (dest + "QTD Report-Rocky Mount ") + date);
+                }
+                else if (f.Name.Equals("MTD Report - Company-100.jpg"))
+                {
+                    File.Move(f.FullName, (dest + "MTD Report-All Company") + date);
+                }
+                else if (f.Name.Equals("QTD Report - Company-100.jpg"))
+                {
+                    File.Move(f.FullName, (dest + "QTD Report-All Company ") + date);
+                }
             }
-            Console.Read();
         }
 
-        
     }
 }
